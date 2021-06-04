@@ -1,0 +1,59 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net472;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Panosen.Resource.CSharp</AssemblyName>
+    <RootNamespace>Panosen.Resource.CSharp</RootNamespace>
+    <Version>1.0.0</Version>
+    <Authors>harriszhang@live.cn</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <DocumentationFile>bin\$(Configuration)\Panosen.Resource.CSharp.xml</DocumentationFile>
+    <PackageIcon>panosen.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\panosen.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="files\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Panosen.Resource" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="CSharpResourceKeys.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CSharpResourceKeys.cs</LastGenOutput>
+    </None>
+    <None Update="CSharpResourcePaths.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CSharpResourcePaths.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CSharpResourceKeys.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpResourceKeys.tt</DependentUpon>
+    </Compile>
+    <Compile Update="CSharpResourcePaths.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpResourcePaths.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>
